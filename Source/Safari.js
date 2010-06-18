@@ -4,12 +4,9 @@ var Safari =
 (function(exports){
 
 
-require.paths.unshift('.');
-require.paths.unshift('../lib');
-
 var hasOwnProperty = {}.hasOwnProperty;
-var escape = require('escape');
-var AppleScriptApp = require('AppleScriptApp-node').AppleScriptApp;
+var escape = require('../lib/escape');
+var AppleScriptApp = require('./AppleScriptApp-node').AppleScriptApp;
 
 
 function uneval(fn){
@@ -70,13 +67,13 @@ Safari.command.reload = function(){
 };
 
 Safari.command.reloadCSS = function(){
-	Array.prototype.map.call(document.querySelectorAll('link[rel=stylesheet][href]'),function(link){
+	return Array.prototype.map.call(document.querySelectorAll('link[rel=stylesheet][href]'),function(link){
 		var href = link.href;
 		href = href.replace(/(&|\?)forceReload=\d+/g, '$1');
 		href += (1+href.indexOf('?') ? '&' : '?') + 'forceReload=' + (+new Date)
 		link.href = href;
 		return href;
-	});
+	}).join('\n');
 };
 
 

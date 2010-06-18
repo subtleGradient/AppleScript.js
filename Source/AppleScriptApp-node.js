@@ -25,9 +25,8 @@ environment:
 ...
 */
 (function(exports){
-require.paths.unshift('../lib');
 var sys = require('sys');
-var escape = require('escape');
+var escape = require('../lib/escape');
 
 
 exports.AppleScriptApp = AppleScriptApp;
