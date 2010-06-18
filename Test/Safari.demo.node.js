@@ -6,7 +6,7 @@ var Safari = new (require('Safari').Safari);
 
 
 
-Safari.exec("$('div').length");
+Safari.exec("document.getElementsByTagName('div').length");
 
 
 
