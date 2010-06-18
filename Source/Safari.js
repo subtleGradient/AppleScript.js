@@ -24,6 +24,10 @@ exports.Safari = Safari;
 
 function Safari(){
 	if (!(this instanceof Safari)) throw new Error("Usage: `new Safari`");
+	var self = this;
+	this.execSync = function(js){
+		return self.exec(js);
+	};
 }
 
 Safari.prototype.debugLevel = '';
